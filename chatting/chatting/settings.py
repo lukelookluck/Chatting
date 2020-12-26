@@ -48,6 +48,16 @@ INSTALLED_APPS = [
 # ASGI: 비동기 요청인 웹 소켓을 처리하는 이벤트
 ASGI_APPLICATION = 'chatting.routing.application'
 
+# channels_redis
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
